@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Column Transforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @column_transforms.each do |column_transform| %>
+      <tr>
+        <td><%= column_transform.external %></td>
+        <td><%= column_transform.internal %></td>
+        <td><%= link_to 'Show', column_transform %></td>
+        <td><%= link_to 'Edit', edit_column_transform_path(column_transform) %></td>
+        <td><%= link_to 'Destroy', column_transform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Column transform', new_column_transform_path %>

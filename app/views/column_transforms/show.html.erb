@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>External:</strong>
+  <%= @column_transform.external %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @column_transform.internal %>
+</p>
+
+<%= link_to 'Edit', edit_column_transform_path(@column_transform) %> |
+<%= link_to 'Back', column_transforms_path %>

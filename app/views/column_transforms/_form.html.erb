@@ -1,0 +1,25 @@
+<%= form_for(@column_transform) do |f| %>
+  <% if @column_transform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@column_transform.errors.count, "error") %> prohibited this column_transform from being saved:</h2>
+
+      <ul>
+      <% @column_transform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.label :external %><br>
+      <%= f.text_field :external %>
+    </div>
+    <div class="field">
+      <%= f.label :internal %><br>
+      <%= f.text_field :internal %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
