@@ -1,0 +1,35 @@
+<h1>Songs#index</h1>
+<%= flash[:notice] %>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>Album</th>
+    <th>Path</th>
+    <th>SS</th>
+    <th>SSRow</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.title %></td>
+        <td><%= song.artist %></td>
+        <td><%= song.album %></td>
+        <td><%= song.path %></td>
+        <td><%= song.ss %></td>
+        <td><%= song.ssrow %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<div>
+
+  <h4>Import that data!</h4>
+  <%= form_tag import_songs_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import TSV" %>
+  <% end %>
+</div>
+
