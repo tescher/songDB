@@ -1,10 +1,32 @@
 class SongsController < ApplicationController
   def index
-    @songs = Song.all
+    if params[:request_format] == "xls"
+      request.format = :xls
+      @songs = Song.all.order('created_at DESC').take(10)
+      # @songs = Song.all
+    else
+      @songs = Song.all.order('created_at DESC').take(10)
+    end
+
+    respond_to do |format|
+      format.html {
+        render :index
+      }
+      format.xls {
+        response.headers['Content-Disposition'] = 'attachment; filename="songs.xls"'
+        render "index.xls"
+      }
+    end
+
   end
 
   def import
     count = Song.import(params[:file])
-    redirect_to_root root_url, notice: "#{count} songs imported!"
+    redirect_to root_url, notice: "#{count} songs imported!"
+  end
+
+  def add_labels
+    count, bad_count = Song.add_labels(params[:file])
+    redirect_to root_url, notice: "#{count} songs updated, #{bad_count} errors, check console for details!"
   end
 end

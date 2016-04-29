@@ -26,10 +26,17 @@
 </table>
 <div>
 
-  <h4>Import that data!</h4>
+  <h4>Import songs</h4>
   <%= form_tag import_songs_path, multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag "Import TSV" %>
   <% end %>
+  <h4>Add labels</h4>
+  <%= form_tag add_labels_songs_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Add TSV" %>
+  <% end %>
+  <h4>Export songs</h4>
+  <%= link_to "Export", songs_path(request_format: "xls") %>
 </div>
 

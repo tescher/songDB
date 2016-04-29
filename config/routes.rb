@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :songs do
-    collection { post :import }
+    collection {
+      post :import
+      post :add_labels
+    }
   end
 
   resources :column_transforms
