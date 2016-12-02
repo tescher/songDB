@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   def index
     if params[:request_format] == "xls"
       request.format = :xls
-      @songs = Song.all.order('created_at DESC').take(10)
+      @songs = Song.all.order('created_at ASC')
       # @songs = Song.all
     else
       @songs = Song.all.order('created_at DESC').take(10)
@@ -21,6 +21,7 @@ class SongsController < ApplicationController
   end
 
   def import
+    Song.delete_all
     count = Song.import(params[:file])
     redirect_to root_url, notice: "#{count} songs imported!"
   end

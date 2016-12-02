@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428172350) do
+ActiveRecord::Schema.define(version: 20161202040543) do
 
   create_table "column_transforms", force: :cascade do |t|
     t.string   "external"
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 20160428172350) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "title"
+    t.boolean  "flag"
+    t.string   "how"
   end
+
+  add_index "songs", ["album"], name: "index_songs_on_album"
+  add_index "songs", ["artist"], name: "index_songs_on_artist"
+  add_index "songs", ["title"], name: "index_songs_on_title"
 
 end
